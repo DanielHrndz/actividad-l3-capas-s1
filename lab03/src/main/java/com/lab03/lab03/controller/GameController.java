@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lab03.lab03.model.Club;
 import com.lab03.lab03.service.ClubService;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,15 +33,16 @@ public class GameController {
 
     // Obtener todos los videojuegos
     @GetMapping("/clubs/search")
-    public String getMethodName(@RequestParam String param) {
-        // TODO
-        return new String();
+    public ResponseEntity<List<Club>> getAllClubs(){
+        return ResponseEntity.ok(clubService.getAllClubs());
     }
+    
+
 
     // Obtener clubes por país
     @GetMapping("/clubs/country/{country}")
-    public ResponseEntity<Club> getClub(@PathVariable("country") String country) {
-        // TODO
+    public ResponseEntity<Club> getClubByCountry(@RequestParam("country") String country) {
         return ResponseEntity.ok(clubService.getClub(country));
     }
+
 }
