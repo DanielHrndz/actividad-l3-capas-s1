@@ -1,10 +1,12 @@
 package com.lab03.lab03.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lab03.lab03.dto.ClubRequest;
 import com.lab03.lab03.model.Club;
 import com.lab03.lab03.repository.ClubRepository;
 
@@ -20,21 +22,17 @@ public class ClubService {
         return clubRepository.save(club);
     }
 
-
     // obtener todos
-        public List<Club> getAllClubs(){
+    public List<Club> getAllClubs() {
         return clubRepository.findAll();
     }
 
-
-    // obtener club por pais
-    public Club getClub(String country){
-        Optional<Club> optionalClub = clubRepository.findByCountry(country);
-        if (optionalClub.isEmpty()) {
-            throw new RuntimeException("User not found");
+    public List<Club> getClubsByCountry(String country) {
+        List<Club> clubs = clubRepository.findByCountry(country.trim());
+        if (clubs.isEmpty()) {
+            throw new RuntimeException("No clubs found in the specified country");
         }
-        return new Club(optionalClub.get().getId(), optionalClub.get().getName(), optionalClub.get().getCuntry(), optionalClub.get().getCoach, optionalClub.get().get);
-
+        return clubs;
     }
 
 }
