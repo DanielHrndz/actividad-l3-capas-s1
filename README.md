@@ -138,3 +138,13 @@ La entrega se considera **cerrada a las 9:00 a.m.**.
 - Solo se tomarán en cuenta los **commits que estén subidos al repositorio antes de las 9:00 a.m.**
 - Commits realizados o subidos después de esa hora **no serán considerados**.
 - Se recomienda comenzar a subir los cambios cuanto antes para evitar inconvenientes de último momento.
+
+## Postgres conecction
+
+- spring.application.name=lab03
+- server.port=8080
+- spring.datasource.url=jdbc:postgresql://localhost:5432/pnc
+- spring.datasource.username=postgres
+- spring.datasource.password=root
+- spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+- spring.jpa.hibernate.ddl-auto=create-drop
